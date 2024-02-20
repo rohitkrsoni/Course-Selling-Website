@@ -6,6 +6,7 @@ import Login from './components/Login'
 import Appbar from './components/Appbar'
 import Register from './components/Register'
 import Dashboard from './components/Dashboard'
+import Course from './components/Course'
 
 function App() {
 
@@ -33,7 +34,7 @@ function App() {
           <Route path={"/login"} element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} />
           <Route path={"/register"} element={<Register />} />
           <Route path={"/dashboard"} element={<Dashboard />} />
-
+          <Route path={"/course"} element={<Course />} />
         </Routes>
       </Router>
     </>
