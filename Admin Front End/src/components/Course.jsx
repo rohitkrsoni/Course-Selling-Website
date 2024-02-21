@@ -1,18 +1,22 @@
 import { Button, Card, CardContent, CardHeader, Typography } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
+import EditCourse from "../modals/EditCourse";
+import { useState } from "react";
 
 const Course = () => {
     const defaultImage = 'https://st2.depositphotos.com/1350793/8441/i/950/depositphotos_84416316-stock-photo-hand-pointing-to-online-course.jpg'
     const location = useLocation();
     const navigate = useNavigate();
-    const course = location.state;
+    const [course, setCourse] = useState(location.state);
+
+    const [openModal, setOpenModal] = useState(false);
 
     const onDeleteHandler = () => {
 
     }
 
     const onEditHandler = () => {
-
+        setOpenModal(true)
     }
 
     return (course && (<div style={{
@@ -50,6 +54,7 @@ const Course = () => {
                 }}>
                     <Button variant={'contained'} size={'small'} color="error" onClick={onDeleteHandler}>Delete</Button>
                     <Button variant={'contained'} size={'small'} onClick={onEditHandler}>Edit</Button>
+                    {openModal && (<EditCourse open={openModal} setOpen={setOpenModal} course={course} setCourse={setCourse} />)}
                 </div>
 
             </CardContent>
