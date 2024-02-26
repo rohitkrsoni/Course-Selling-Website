@@ -34,6 +34,7 @@ const EditCourse = ({ open, setOpen, course, setCourse }) => {
         }
         else {
             window.alert("An error occured");
+            handleOnClose();
         }
         setOpen(false)
     }

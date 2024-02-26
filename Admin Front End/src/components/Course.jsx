@@ -16,7 +16,16 @@ const Course = () => {
     }
 
     const onEditHandler = () => {
-        setOpenModal(true)
+        window.localStorage.getItem('token') && fetch("http://localhost:3000/admin/loggedIn", {
+            method: 'GET',
+            headers: {
+                'authorization': 'bearer ' + window.localStorage.getItem('token'),
+            }
+        }).then(res => {
+            if (res.status == 200) setOpenModal(true)
+            else navigate('/login')
+        })
+
     }
 
     return (course && (<div style={{
